@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny Yes or No</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffe6eb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #questionContainer {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff4d6d;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            margin-right: 10px;
+        }
+
+        #noBtn {
+            background-color: #999;
+            color: white;
+            position: absolute;
+            left: 250px;
+        }
+
+        #heartLoader {
+            display: none;
+            font-size: 24px;
+            color: #ff4d6d;
+            margin-top: 20px;
+        }
+
+        #resultContainer {
+            display: none;
+            margin-top: 20px;
+            font-size: 22px;
+            color: #ff4d6d;
+        }
+    </style>
+</head>
+<body>
+
+<div id="questionContainer">
+    <h2>Do you like me? 😘</h2>
+    <div>
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+</div>
+
+<div id="heartLoader">💖 Loading...</div>
+<div id="resultContainer">Yay! You said Yes! 😍</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const questionContainer = document.getElementById("questionContainer");
+    const heartLoader = document.getElementById("heartLoader");
+    const resultContainer = document.getElementById("resultContainer");
+
+    noBtn.addEventListener("mouseover", () => {
+        const newX = Math.floor(Math.random() * (questionContainer.offsetWidth - noBtn.offsetWidth));
+        const newY = Math.floor(Math.random() * (questionContainer.offsetHeight - noBtn.offsetHeight));
+
+        noBtn.style.left = `${newX}px`;
+        noBtn.style.top = `${newY}px`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+        heartLoader.style.display = "block";
+
+        setTimeout(() => {
+            heartLoader.style.display = "none";
+            resultContainer.style.display = "block";
+        }, 3000);
+    });
+</script>
+
+</body>
+</html>
